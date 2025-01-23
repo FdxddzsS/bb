@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سورة البقرة</title>
+    <style>
+        @font-face {
+            font-family: 'Uthmani';
+            src: url('https://fonts.qurancomplex.gov.sa/UthmanicHafs1Ver09.otf');
+        }
+        body {
+            font-family: 'Uthmani', serif;
+            background-color: #f9f9f9;
+            line-height: 2;
+            padding: 20px;
+            text-align: justify;
+        }
+        .section {
+            margin: 10px 0;
+        }
+        .highlight {
+            background-color: lightblue;
+        }
+        audio {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>سورة البقرة</h1>
+    <audio id="audio" controls>
+        <source src="https://download.quranicaudio.com/qdc/saud_ash-shuraym/murattal/002.mp3" type="audio/mp3">
+        متصفحك لا يدعم تشغيل الصوت.
+    </audio>
+    <div id="quran-text">
+        <div class="section" data-start="1" data-end="6">
+            <span>الَمَ (1)</span>
+        </div>
+        <div class="section" data-start="7" data-end="12">
+            <span>ذَٰلِكَ الْكِتَابُ لَا رَيْبَ ۛ فِيهِ ۛ هُدًى لِّلْمُتَّقِينَ (2)</span>
+        </div>
+        <div class="section" data-start="13" data-end="22">
+            <span>الَّذِينَ يُؤْمِنُونَ بِالْغَيْبِ وَيُقِيمُونَ الصَّلَاةَ وَمِمَّا رَزَقْنَاهُمْ يُنفِقُونَ (3)</span>
+        </div>
+        <div class="section" data-start="23" data-end="32">
+            <span>وَالَّذِينَ يُؤْمِنُونَ بِمَا أُنزِلَ إِلَيْكَ وَمَا أُنزِلَ مِن قَبْلِكَ وَبِالْآخِرَةِ هُمْ يُوقِنُونَ (4)</span>
+        </div>
+        <div class="section" data-start="33" data-end="40">
+            <span>أُولَٰئِكَ عَلَىٰ هُدًى مِّن رَّبِّهِمْ ۖ وَأُولَٰئِكَ هُمُ الْمُفْلِحُونَ (5)</span>
+        </div>
+    </div>
+    <script>
+        const audio = document.getElementById("audio");
+        const sections = document.querySelectorAll(".section");
+
+        audio.addEventListener("timeupdate", () => {
+            const currentTime = audio.currentTime;
+
+            sections.forEach(section => {
+                const start = parseFloat(section.getAttribute("data-start"));
+                const end = parseFloat(section.getAttribute("data-end"));
+                if (currentTime >= start && currentTime <= end) {
+                    section.classList.add("highlight");
+                } else {
+                    section.classList.remove("highlight");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
